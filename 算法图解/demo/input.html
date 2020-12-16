@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #demo{
+            width: 580px;
+            background: #ccc;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid black;
+        }
+        #demo input[type='file']{
+            display: none;
+        }
+        #demo img{
+            width: 300px
+        }
+        #demo label,#demo button{
+            background-color: #7F9CCB;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px ridge black;
+            font-size: 0.8rem;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        #demo label:hover,#demo button:hover{
+            color: #ffffff;
+            background-color: #3771d0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</head>
+<body x-data="demo()">
+<form action="" id="demo">
+    <label for="imgFile">Choose images to upload (PNG, JPG)</label>
+    <input type="file" name="imgFile" id="imgFile" @change="imgChange()" x-ref="img">
+    <div class="preview">
+        <p x-text="previewText"></p>
+        <img :src="imgSrc">
+    </div>
+    <button>Submit</button>
+</form>
+</body>
+<script>
+    function demo() {
+        return {
+            imgChange(){
+                let input = this.$refs.img
+                const curFile = input.files
+                this.previewText = curFile[0].name|| 'No files currently selected for upload'
+                this.imgSrc =  URL.createObjectURL(curFile[0])
+            },
+            imgSrc:'',
+            previewText:'No files currently selected for upload'
+        }
+    }
+</script>
+</html>
