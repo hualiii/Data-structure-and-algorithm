@@ -54,6 +54,7 @@
             imgChange(){
                 let input = this.$refs.img
                 const curFile = input.files
+                console.log(curFile)
                 this.previewText = curFile[0].name|| 'No files currently selected for upload'
                 this.imgSrc =  URL.createObjectURL(curFile[0])
             },
