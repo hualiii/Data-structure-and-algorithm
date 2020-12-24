@@ -11,3 +11,4 @@ let climbStairs = function (n) {
     }
     return dp[n]
 }
+console.log(climbStairs(3))
