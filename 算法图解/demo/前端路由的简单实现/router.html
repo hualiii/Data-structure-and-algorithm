@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>router</title>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="js/router.js"></script>
+</head>
+<body x-data="routerData()" x-init="routerInit()">
+<ul>
+    <li><a href="#">home</a></li>
+    <li><a href="#/about">about</a></li>
+    <li><a href="#/setting">setting</a></li>
+</ul>
+<div id="content" x-ref="content" x-html="contInfo">
+
+</div>
+</body>
+<script>
+    function routerData() {
+        return {
+            contInfo: "",
+            routerInit() {
+                // let content = this.$refs.content
+                // let r = new Router()
+                // r.init()
+                // r.router('/', () => {
+                //     this.contInfo = 'home'
+                // })
+                // r.router('/about', () => {
+                //     this.contInfo = 'about'
+                // })
+                // r.router('/setting', () => {
+                //     this.contInfo = 'setting'
+                // })
+
+                let formData = new FormData();
+                console.log(typeof formData)
+                formData.append("x_json", JSON.stringify({"Uid1": 1, "Uid2": 113}))
+                fetch('http://192.168.0.23:8001/api/pm/read', {
+                    method: 'POST',
+                    // mode: "no-cors",
+                    body: formData
+                })
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    axios({
+        url: 'http://192.168.0.23:8001/api/pm/read',
+        method: 'post',
+        data: {
+            "Uid1": 1,
+            "Uid2": 120
+        }
+    })
+</script>
+</html>
